@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginRight="8dp"
+        android:indeterminate="true"
+        android:indeterminateOnly="true"
+        android:indeterminateDuration="1000"
+        android:indeterminateDrawable="@drawable/loading"
+        style="@android:style/Widget.ProgressBar"
+        android:id="@+id/progressbar"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载中..."
+        android:id="@+id/loading"/>
+
+</LinearLayout>
