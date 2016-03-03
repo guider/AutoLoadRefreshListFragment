@@ -30,9 +30,9 @@ public abstract class AutoBaseAdapter<T> extends BaseAdapter {
     }
 
     public void setData(List<T> datas) {
-        if (datas == null) {
-            return;
-        }
+//        if (datas == null) {
+//            return;
+//        }
 
         mDatas = datas;
         notifyDataSetChanged();

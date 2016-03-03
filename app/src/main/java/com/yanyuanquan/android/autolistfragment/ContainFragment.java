@@ -1,30 +1,26 @@
 package com.yanyuanquan.android.autolistfragment;
 
-import android.app.ListFragment;
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
-import com.yanyuanquan.android.autolistfragmentlibrary.AutoBaseAdapter;
 import com.yanyuanquan.android.autolistfragmentlibrary.AutoListFragment;
 import com.yanyuanquan.android.autolistfragmentlibrary.AutoViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
-import java.util.zip.Adler32;
 
 /**
  * Created by apple on 16/2/26.
- *
  *  不用写一行xml文件 实现下拉刷新下拉加载
- *
  *
  */
 public class ContainFragment extends AutoListFragment<Entity> {
     List<Entity> entities = new ArrayList<>();
 
     @Override
-    protected int setlayoutId() {
+    public int getLayout() {
         return R.layout.item_listview;
     }
 
@@ -40,25 +36,34 @@ public class ContainFragment extends AutoListFragment<Entity> {
 
     @Override
     protected void initView() {
+        // 可是定制EmptyView
+        View v = LayoutInflater.from(getActivity()).inflate(R.layout.empty,null);
+        setListViewEmptyView(v);
+
+
         for (int i= 0;i<20; i++){
             entities.add(new Entity(("测试"+i),i));
         }
-        getAdapter().setData(entities);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setListAdapter();
+                getAdapter().setData(entities);
+            }
+        },1000);
+
     }
 
     @Override
     protected void refresh() {
         List<Entity> entities2 = new ArrayList<>();
-        for (int i= 0;i<20; i++){
-            entities2.add(new Entity(("测试----2"+i),i));
-        }
-        getAdapter().setData(entities2);
-        onRefreshComplete();
+
+        getAdapter().setData(null);
+        setRefreshComplete();
     }
     List<Entity> entities3 = new ArrayList<>();
     @Override
     protected void loadMoreData() {
-
         new Thread(){
             @Override
             public void run() {
@@ -91,4 +96,6 @@ public class ContainFragment extends AutoListFragment<Entity> {
         setOnLoadModeListener();
         return true;
     }
+
+
 }

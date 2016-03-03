@@ -5,6 +5,7 @@
     <item name="listview" type="id" />
     <item name="textview" type="id" />
     <item name="swiperefreshlayout" type="id" />
+    <item name="empty_view" type="id"/>
 
 
 </resources>

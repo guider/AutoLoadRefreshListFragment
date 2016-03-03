@@ -5,7 +5,7 @@ a fragment with auto load and auto refresh
 /**
  *  时间匆忙，简版，周末更新，
  *
- *不用写Adapter 和XML的ListView 可替代绝大多的 ListView 和ListFragment 
+ *不用写Adapter 和XML的ListView 可替代绝大多的 ListView 和ListFragment
  *
  */
 

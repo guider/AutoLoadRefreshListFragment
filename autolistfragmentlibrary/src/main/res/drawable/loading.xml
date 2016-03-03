@@ -10,7 +10,7 @@
             <bitmap
                 android:filter="true"
                 android:antialias="true"
-                android:src="@drawable/ic_launcher"/>
+                android:src="@drawable/loading_image"/>
         </rotate>
 
     </item>
