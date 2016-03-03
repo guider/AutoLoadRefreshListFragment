@@ -27,8 +27,8 @@ a fragment with auto load and auto refresh
                     6，可定制的Loading
 
       // 默认的EmptyView （后期会改好看一点)
-     ![image]https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled.gif
+     ![image](https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled.gif)
 
      //订制后的EmptyView 可做跳转
-![image]https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled2.gif
+       ![image](https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled2.gif)
 }
