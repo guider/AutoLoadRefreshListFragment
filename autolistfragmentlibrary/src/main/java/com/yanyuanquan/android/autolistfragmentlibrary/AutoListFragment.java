@@ -44,6 +44,8 @@ public abstract class AutoListFragment<T> extends AutoBaseFragment implements Sw
 //        linearLayout.addView(progressBar, new FrameLayout.LayoutParams(
 //                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
+
+
         View progressBar = LayoutInflater.from(getActivity()).inflate(R.layout.progressbar_layout, null);
         root.addView(progressBar, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         //---------ListView
