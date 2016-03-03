@@ -16,75 +16,19 @@ a fragment with auto load and auto refresh
  *
  *
  */
-public class ContainFragment extends AutoListFragment<Entity> {
-    List<Entity> entities = new ArrayList<>();
 
-    @Override
-    protected int setlayoutId() {
-        return R.layout.item_listview;
-    }
+   只需要继承AutoListFragment 实现几个抽象方法就能实现
+                    1  空列表提示加载中，
+                    2 没数据时显示Emptyview
+                    3 EmptyView 可定制，
+                    4 无需判断状态
+                    // 周末更新
+                    5, 可定制 的footerView
+                    6，可定制的Loading
 
-    @Override
-    protected void setListData(Entity entity, AutoViewHolder holder, Context context) {
-        ((TextView)holder.getView(R.id.tv)).setText(entity.getTitle());
-    }
+      // 默认的EmptyView （后期会改好看一点)
+     ![image]https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled.gif
 
-    @Override
-    protected boolean canRefresh() {
-        return true;
-    }
-
-    @Override
-    protected void initView() {
-        for (int i= 0;i<20; i++){
-            entities.add(new Entity(("测试"+i),i));
-        }
-        getAdapter().setData(entities);
-    }
-
-    @Override
-    protected void refresh() {
-        List<Entity> entities2 = new ArrayList<>();
-        for (int i= 0;i<20; i++){
-            entities2.add(new Entity(("测试----2"+i),i));
-        }
-        getAdapter().setData(entities2);
-        onRefreshComplete();
-    }
-    List<Entity> entities3 = new ArrayList<>();
-    @Override
-    protected void loadMoreData() {
-
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-
-                for (int i= 0;i<20; i++){
-                    entities3.add(new Entity(("测试3"+System.currentTimeMillis()/1000),i));
-                }
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getAdapter().append(entities3);
-                        /**
-                         *  是否还有更多数据
-                         */
-                        setHasMore(true);
-
-                        getListView().onLoadMoreComplete();
-                    }
-                },2000);
-            }
-        }.start();
-
-
-    }
-
-    private android.os.Handler handler = new android.os.Handler();
-    @Override
-    protected boolean hasModeData() {
-        setOnLoadModeListener();
-        return true;
-    }
+     //订制后的EmptyView 可做跳转
+![image]https://github.com/guider/AutoLoadRefreshListFragment/blob/master/Untitled2.gif
 }
